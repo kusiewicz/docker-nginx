@@ -2,12 +2,12 @@ const fs = require("fs");
 
 const { Pool } = require("pg");
 
-databaseUrl =
-  process.env.DATABASE_URL ||
-  fs.readFileSync(process.env.DATABASE_URL_FILE, "utf8");
+// databaseUrl =
+//   process.env.DATABASE_URL ||
+//   fs.readFileSync(process.env.DATABASE_URL_FILE, "utf8");
 
 const pool = new Pool({
-  connectionString: databaseUrl,
+  connectionString: 'postgresql://admin:wasdwasd@localhost:7432/admin',
 });
 
 pool.on("error", (err, client) => {

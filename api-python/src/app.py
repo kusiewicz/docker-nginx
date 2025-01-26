@@ -6,7 +6,7 @@ import os
 
 app = Flask(__name__)
 
-PORT = int(os.getenv("PORT", 3000))
+PORT = int(os.getenv("PORT", 4001))
 
 @app.route("/", methods=["GET"])
 def home():

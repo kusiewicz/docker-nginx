@@ -7,7 +7,7 @@ DATABASE_URL = os.getenv(
 )
 
 connection_pool = psycopg2.pool.SimpleConnectionPool(
-    1, 10, dsn=DATABASE_URL
+    1, 10, dsn='postgresql://admin:wasdwasd@localhost:7432/admin'
 )
 
 def get_date_time():
