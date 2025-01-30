@@ -33,8 +33,8 @@ export default function Home() {
   return (
     <QueryClientProvider client={queryClient}>
       <h1>Hi!</h1>
-      <CurrentTime api="/api/python/" />
-      <CurrentTime api="/api/node/" />
+      <CurrentTime api="/api/python" />
+      <CurrentTime api="/api/node" />
     </QueryClientProvider>
   );
 }
