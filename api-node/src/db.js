@@ -2,12 +2,12 @@ const fs = require("fs");
 
 const { Pool } = require("pg");
 
-// databaseUrl =
-//   process.env.DATABASE_URL ||
-//   fs.readFileSync(process.env.DATABASE_URL_FILE, "utf8");
-
 const pool = new Pool({
-  connectionString: 'postgresql://admin:wasdwasd@localhost:7432/admin',
+  user: "admin",
+  host: "host.docker.internal",
+  database: "admin",
+  password: "wasdwasd",
+  port: 7432,
 });
 
 pool.on("error", (err, client) => {
