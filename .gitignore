@@ -15,3 +15,4 @@ docker-compose.override.yaml
 /src/infrastructure/mailer/templates/**/*.txt
 .history
 .vscode
+.venv

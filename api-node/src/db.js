@@ -1,13 +1,9 @@
-const fs = require("fs");
+require("dotenv").config();
 
 const { Pool } = require("pg");
 
 const pool = new Pool({
-  user: "admin",
-  host: "host.docker.internal",
-  database: "admin",
-  password: "wasdwasd",
-  port: 7432,
+  connectionString: process.env.DATABASE_URL,
 });
 
 pool.on("error", (err, client) => {

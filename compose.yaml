@@ -1,0 +1,44 @@
+version: "3.8"
+
+services:
+  react-app:
+    build: ./app-react
+    ports:
+      - "3000:90"
+    depends_on:
+      - api-node
+      - api-python
+
+  api-node:
+    build: ./api-node
+    ports:
+      - "4002:4002"
+    environment:
+      - DATABASE_URL=postgres://user:password@db:5432/mydatabase
+    depends_on:
+      db:
+        condition: service_healthy
+
+  api-python:
+    build: ./api-python
+    ports:
+      - "4001:4001"
+    environment:
+      - DATABASE_URL=postgres://user:password@db:5432/mydatabase
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mydatabase
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U user -d mydatabase"]
+      interval: 5s
+      retries: 5
+      start_period: 10s
+
